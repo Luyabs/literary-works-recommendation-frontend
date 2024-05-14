@@ -23,8 +23,8 @@
 
 ## 部分页面展示
 ![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/12b582a5-da40-491f-9b38-66331cf42caf)
+![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/b3f9c0e7-13e4-40e0-9980-8457db54e904)
 ![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/786dd1e7-61d8-4ee6-9166-2471b69288af)
-![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/105eca14-22ea-41f5-ac96-fe328ec33d23)
 ![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/66e9988f-cdf9-4042-ada9-767d402c8914)
 ![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/187c95f5-7866-42c9-97bf-b5e0d9740671)
 
