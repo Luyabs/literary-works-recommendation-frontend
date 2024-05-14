@@ -21,6 +21,9 @@
 3. src/views 视图文件目录 -> 此目录存储大部分页面文件（.vue文件）
 4. 其余目录下的文件大多未在vea的基础上做过多调整（从vue-element-template上额外集成了权限相关的功能），熟悉该框架或其它vue项目的开发者能快速上手本项目
 
+## 项目整体架构
+![image](https://github.com/Luyabs/literary-works-recommendation-backend/assets/74538732/a3344555-7c3e-498e-a794-06a25da84354)
+
 ## 部分页面展示
 ![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/12b582a5-da40-491f-9b38-66331cf42caf)
 ![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/b3f9c0e7-13e4-40e0-9980-8457db54e904)
@@ -30,5 +33,4 @@
 
 ## 系统用例图
 ![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/7144c98a-ca43-4dfe-be21-c004510b688f)
-
 
