@@ -1,5 +1,5 @@
 ## 基于混合推荐算法的文学作品推荐系统
-1. `当前文件` 前端 https://github.com/Luyabs/literary-works-recommendation-frontend
+1. `你在这` 前端 https://github.com/Luyabs/literary-works-recommendation-frontend
 2. 业务后端 https://github.com/Luyabs/literary-works-recommendation-backend
 3. 算法端 https://github.com/Luyabs/literary-works-recommendation-algorithm
 
