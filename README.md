@@ -8,12 +8,12 @@
 `改进后更易二次开发的模板` https://github.com/Luyabs/springboot-vue-template   
 
 ## 项目运行方式
-1. 与vue-element-admin一样，准备好 nodejs <= 16   
+1. 与vue-element-admin一样，准备好**NodeJS <= 16** (更新的版本可能存在bug)   
 2. 在当前项目的根目录下打开终端
-3. 输入npm install --registry=https://registry.npm.taobao.org 安装依赖
-4. 通过npm run dev运行前端项目
-5. `注意` 你必须先运行业务后端，否则无法登录！
-6. `注意` 如果要获取推荐服务，则还需要运行算法后端！
+3. 输入npm install --registry=https://registry.npm.taobao.org **安装依赖**
+4. 通过**npm run dev**运行前端项目
+5. `注意` 你必须**先运行业务后端**，否则无法登录！
+6. `注意` 如果要获取推荐服务，则还需要**运行算法后端**！
 
 ## 重要目录-src目录下的文件结构
 1. src/api 接口文件目录 -> 此目录存储所有访问后端接口的函数
