@@ -16,11 +16,11 @@
               Home
             </el-dropdown-item>
           </router-link>
-          <a target="_blank" href="https://github.com/Luyabs/online-judge-frontend">
+          <a target="_blank" href="https://github.com/Luyabs">
             <el-dropdown-item>Github</el-dropdown-item>
           </a>
-          <a target="_blank" href="https://github.com/Luyabs/online-judge-backend">
-            <el-dropdown-item>BackEnd</el-dropdown-item>
+          <a target="_blank" href="https://github.com/Luyabs">
+            <el-dropdown-item>待增加</el-dropdown-item>
           </a>
           <el-dropdown-item divided @click.native="logout">
             <span style="display:block;">Log Out</span>

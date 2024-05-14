@@ -7,31 +7,34 @@
         style="width: 100%"
       >
         <!-- <el-table-column type="index" width="30" align="center"> </el-table-column>-->
-        <el-table-column prop="submissionId" label="编号" width="98" align="center" />
-        <el-table-column prop="problemId" label="问题编号" width="98" />
-        <el-table-column prop="insertTime" label="完成时间" width="180" />
-        <el-table-column label="成功" width="100">
+        <el-table-column prop="workId" label="编号" width="98" align="center" />
+        <el-table-column prop="workName" label="作品名" width="240" />
+        <el-table-column prop="author" label="作者" width="110" />
+        <el-table-column prop="tags" label="标签" width="460">
           <template slot-scope="scope">
-            <el-tag v-if="scope.row.isSuccess === true" type="success" plain> 通过 </el-tag>
-            <el-tag v-if="scope.row.isSuccess === false" type="warning" plain> 失败 </el-tag>
+            <el-link
+              v-for="(tag, index) in scope.row.tags.split(' ')"
+              :key="index"
+              type="primary"
+              style="margin-right: 10px"
+              @click="jumpToQuery(tag)"
+            >
+              {{ tag }}
+            </el-link>
           </template>
         </el-table-column>
-        <el-table-column label="详情" width="680">
-          <template slot-scope="scope">
-            <p v-if="scope.row.isSuccess === true"> 运行时间 {{ scope.row.runtime }} ms </p>
-            <p v-if="scope.row.isSuccess === false"> {{ scope.row.errorType }} </p>
-          </template>
-        </el-table-column>
+        <el-table-column prop="visitCount" label="访问数" width="76" />
+        <el-table-column prop="updateTime" label="访问时间" width="170" />
         <el-table-column label="操作">
           <template slot-scope="scope">
-            <el-button type="primary" size="medium" @click="enjoy(scope.row.problemId)"> 前往此题 </el-button>
+            <el-button type="info" size="medium" plain @click="jumpToDetail(scope.row.workId)"> 详细信息 </el-button>
           </template>
         </el-table-column>
       </el-table>
     </div>
 
     <!-- 分页组件 -->
-    <div style="margin-top: 15px; margin-left: 20px;">
+    <div style="margin-top: 15px; margin-left: 20px; margin-bottom: 15px">
       <el-pagination
         :page-sizes="[5, 10, 20, 30]"
         layout="total, sizes, prev, pager, next, jumper"
@@ -43,12 +46,13 @@
         @current-change="handleCurrentChange"
       />
     </div>
-
   </div>
 </template>
 
 <script>
-import { submission } from '@/api/statistic/statistic'
+
+import { getHistory } from '@/api/work/history'
+import router from '@/router'
 
 export default {
   data() {
@@ -56,11 +60,7 @@ export default {
       tableData: [],
       total: 0,
       currentPage: 1,
-      pageSize: 10,
-
-      detailedFormData: {}, // 详细信息表单数据
-      detailedFormVisible: false // 详细信息表单可见度
-
+      pageSize: 10
     }
   },
   created() {
@@ -79,18 +79,13 @@ export default {
       this.fetchData()
     },
 
-    // 清除详细信息表单数据
-    detailedFormClear() {
-      this.detailedFormData = {}
-    },
-
     // 获取全部数据
     fetchData() {
       const params = {
-        currentPage: this.currentPage,
-        pageSize: this.pageSize
+        pageSize: this.pageSize,
+        currentPage: this.currentPage
       }
-      submission(params).then(response => {
+      getHistory(params).then(response => {
         if (response.success === true) {
           this.tableData = response.data.page.records
           this.total = response.data.page.total
@@ -98,15 +93,26 @@ export default {
       })
     },
 
-    // 享受oj
-    enjoy(problemId) {
+    // 跳转到详情页面
+    jumpToDetail(workId) {
       this.$router.push({
-        path: '/problem_set/problem',
+        path: '/work/detail',
         query: {
-          problemId: problemId
+          workId: workId
         }
       })
-    }
+    },
+
+    // 跳转(新窗口)到查询页面
+    jumpToQuery(tag) {
+      const routeUrl = router.resolve({
+        path: '/work/query',
+        query: {
+          tags: tag
+        }
+      })
+      window.open(routeUrl.href, '_blank')
+    },
   }
 }
 </script>

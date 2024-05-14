@@ -34,24 +34,29 @@ export function logout() {
   })
 }
 
-export function getPage(params) {
+export function changeInformation(data) {
+  if (data.password !== '') {
+    data.password = md5(data.password)
+  }
   return request({
-    url: '/user/page',
-    method: 'get',
-    params
+    url: '/user/information',
+    method: 'put',
+    data
   })
 }
 
-export function getById(id) {
+export function changePrivacy(data) {
   return request({
-    url: `/user/${id}`,
-    method: 'get'
+    url: '/user/privacy',
+    method: 'put',
+    data
   })
 }
 
-export function reverseBan(id) {
+export function reverseBannedStatus(userId) {
   return request({
-    url: `/user/ban/${id}`,
+    url: `/user/ban/${userId}`,
     method: 'post'
   })
 }
+

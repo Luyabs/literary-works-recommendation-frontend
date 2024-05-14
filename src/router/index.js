@@ -36,13 +36,13 @@ import Layout from '@/layout'
 export const constantRoutes = [
   {
     path: '/login',
-    component: () => import('@/views/login/index'),
+    component: () => import('@/views/login/login'),
     hidden: true
   },
 
   {
     path: '/register',
-    component: () => import('@/views/register/index'),
+    component: () => import('@/views/register/register'),
     hidden: true
   },
 
@@ -55,83 +55,94 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/homepage',
     children: [{
-      path: 'dashboard',
-      name: 'dashboard',
-      component: () => import('@/views/dashboard/dashboard'),
-      meta: { title: '首页', icon: 'dashboard' }
+      path: 'homepage',
+      name: 'homepage',
+      component: () => import('@/views/work/homepage'),
+      meta: { title: '首页', icon: 'el-icon-position', affix: true }
     }]
   },
 
   {
-    path: '/problem_set',
+    path: '/work',
+    name: 'work',
+    redirect: '/work/recommend',
     component: Layout,
-    redirect: '/problem_set/all',
-    name: 'problem_set',
-    meta: { title: '刷刷OJ', icon: 'el-icon-notebook-2' },
-    children: [
-      {
-        path: 'all',
-        name: 'all',
-        component: () => import('@/views/problem/problem_all'),
-        meta: { title: '题库', icon: 'el-icon-s-grid' }
-      },
-      {
-        path: 'problem',
-        name: 'problem',
-        component: () => import('@/views/problem/problem_detailed'),
-        meta: { title: '题目', icon: 'el-icon-thumb' }
-      }
-    ]
+    meta: { title: '文学作品', icon: 'el-icon-notebook-2' },
+    children: [{
+      path: 'recommend',
+      name: 'recommend',
+      component: () => import('@/views/work/recommend'),
+      meta: { title: '个性化推荐', icon: 'el-icon-present' }
+    }, {
+      path: 'query',
+      name: 'query',
+      component: () => import('@/views/work/query'),
+      meta: { title: '检索', icon: 'el-icon-search' }
+    }, {
+      path: 'detail',
+      name: 'detail',
+      hidden: true,
+      component: () => import('@/views/work/detail'),
+      meta: { title: '详情信息', icon: 'el-icon-search' }
+    }]
   },
 
   {
-    path: '/my_upload',
+    path: '/my',
+    name: 'my',
+    redirect: '/my/info',
     component: Layout,
-    // redirect: '/problem_set/',
-    name: 'problem_set',
-    meta: { title: '', icon: 'el-icon-upload2' },
-    children: [
-      {
-        path: '',
-        name: '',
-        component: () => import('@/views/my_upload/my_upload'),
-        meta: { title: '我的上传', icon: 'el-icon-upload2' }
-      },
-
-      {
-        path: '/test_case',
-        name: 'test_case',
-        component: () => import('@/views/test_case/test_case'),
-        hidden: true,
-        meta: { title: '测试用例', icon: 'el-icon-upload2' }
-      }
-    ]
+    meta: { title: '个人信息', icon: 'el-icon-user' },
+    children: [{
+      path: 'info',
+      name: 'info',
+      component: () => import('@/views/my/my_info'),
+      meta: { title: '基础信息', icon: 'el-icon-postcard' }
+    }, {
+      path: 'review',
+      name: 'review',
+      component: () => import('@/views/my/my_review'),
+      meta: { title: '我的评论', icon: 'el-icon-chat-dot-square' }
+    }]
   },
 
   {
-    path: '/statistic',
+    path: '/collection',
+    name: 'collection',
     component: Layout,
-    // redirect: '/statistic',
-    name: 'problem_set',
-    meta: { title: '统计信息', icon: 'el-icon-s-data' },
-    children: [
-      {
-        path: '',
-        name: '',
-        component: () => import('@/views/my_statistic/statistic'),
-        meta: { title: '我的统计', icon: 'el-icon-trophy-1' }
-      },
-      {
-        path: 'history',
-        name: 'history',
-        component: () => import('@/views/my_statistic/history'),
-        meta: { title: '历史记录', icon: 'el-icon-s-marketing' }
-      }
-    ]
+    children: [{
+      path: '',
+      name: '',
+      component: () => import('@/views/collection/collection'),
+      meta: { title: '收藏夹', icon: 'el-icon-star-off' }
+    }]
+  },
+
+  {
+    path: '/history',
+    name: 'history',
+    component: Layout,
+    children: [{
+      path: '',
+      name: '',
+      component: () => import('@/views/history/history'),
+      meta: { title: '历史记录', icon: 'el-icon-time' }
+    }]
+  },
+
+  {
+    path: '/visit_other',
+    name: 'visit_other',
+    component: Layout,
+    children: [{
+      path: '',
+      name: '',
+      component: () => import('@/views/visit/visit_other'),
+      meta: { title: '用户查询', icon: 'el-icon-connection' }
+    }]
   }
-
 ]
 
 /**
@@ -139,37 +150,15 @@ export const constantRoutes = [
  */
 export const asyncRoutes = [
   {
-    path: '/admin',
+    path: '/manage_work',
+    name: 'manage_work',
     component: Layout,
-    redirect: '/admin/dashboard',
-    name: 'problem_set',
-    meta: { roles: ['admin'], title: '管理员菜单', icon: 'el-icon-s-cooperation' },
-    children: [
-      {
-        path: 'dashboard',
-        name: 'dashboard',
-        component: () => import('@/views/dashboard/dashboard'),
-        meta: { title: '仪表盘', icon: 'dashboard' }
-      },
-      {
-        path: 'judgement',
-        name: 'judgement',
-        component: () => import('@/views/admin/problem_audit'),
-        meta: { title: '审批题目变更', icon: 'el-icon-s-check' }
-      },
-      {
-        path: 'management/user',
-        name: 'user_management',
-        component: () => import('@/views/admin/user_management'),
-        meta: { title: '人员管理', icon: 'el-icon-user' }
-      },
-      {
-        path: 'management/problem',
-        name: 'problem_management',
-        component: () => import('@/views/admin/problem_management'),
-        meta: { title: '题目管理', icon: 'el-icon-s-grid' }
-      }
-    ]
+    children: [{
+      path: '',
+      name: '',
+      component: () => import('@/views/admin/manage_work'),
+      meta: { roles: ['admin'], title: '作品管理', icon: 'el-icon-folder-add' }
+    }]
   },
 
   // 404 page must be placed at the end !!!
