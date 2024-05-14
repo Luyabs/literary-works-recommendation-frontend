@@ -12,6 +12,8 @@
 2. 在当前项目的根目录下打开终端
 3. 输入npm install --registry=https://registry.npm.taobao.org 安装依赖
 4. 通过npm run dev运行前端项目
+5. `注意` 你必须先运行业务后端，否则无法登录！
+6. `注意` 如果要获取推荐服务，则还需要运行算法后端！
 
 ## 重要目录-src目录下的文件结构
 1. src/api 接口文件目录 -> 此目录存储所有访问后端接口的函数
@@ -19,15 +21,15 @@
 3. src/views 视图文件目录 -> 此目录存储大部分页面文件（.vue文件）
 4. 其余目录下的文件大多未在vea的基础上做过多调整（从vue-element-template上额外集成了权限相关的功能），熟悉该框架或其它vue项目的开发者能快速上手本项目
 
+## 部分页面展示
+![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/12b582a5-da40-491f-9b38-66331cf42caf)
+
+
 ## 系统用例图
 ![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/7144c98a-ca43-4dfe-be21-c004510b688f)
-
-
-## 部分页面展示
-![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/783f02bf-f632-4b1b-a4a8-61131ec85576)
-![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/64591608-d046-49d7-b18f-c1c3c61e1b2f)
-![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/a4304a06-9bd0-4370-99b4-2d0d4b2c9589)
-![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/833076e7-4397-40fb-899b-8b69504665ad)
-![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/60a18f74-a65f-42a5-9017-1ba2057ebfba)
+![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/786dd1e7-61d8-4ee6-9166-2471b69288af)
+![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/105eca14-22ea-41f5-ac96-fe328ec33d23)
+![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/66e9988f-cdf9-4042-ada9-767d402c8914)
+![image](https://github.com/Luyabs/literary-works-recommendation-frontend/assets/74538732/187c95f5-7866-42c9-97bf-b5e0d9740671)
 
 
